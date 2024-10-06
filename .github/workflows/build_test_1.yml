@@ -24,8 +24,14 @@ jobs:
     - name: Build and Run Docker Compose in Detached Mode
       run: docker-compose up --build -d
 
+    - name: Wait for MySQL to be ready
+      run: sleep 10  
+
     - name: Run Django makemigrations
       run: docker-compose exec -T web python3 manage.py makemigrations
+
+    - name: Wait for MySQL to be ready
+      run: sleep 10
 
     - name: Run Django migrate
       run: docker-compose exec -T web python3 manage.py migrate
