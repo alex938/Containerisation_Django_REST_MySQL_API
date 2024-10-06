@@ -1,0 +1,55 @@
+# Python-related
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+env/
+venv/
+ENV/
+VENV/
+env.bak/
+venv.bak/
+
+# Django-related
+*/migrations/*.pyc
+*/migrations/*.pyo
+*.env
+
+# IDE and editor-related
+.vscode/
+.idea/
+*.iml
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Logs and local database
+*.log
+db.sqlite3
+
+# Static and media files
+media/
+staticfiles/
+
+# Third-party dependencies
+lib/
+pip-log.txt
+pip-delete-this-directory.txt
+.Python
+Pipfile.lock
+poetry.lock
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
