@@ -25,22 +25,19 @@ jobs:
       run: docker-compose up --build -d
 
     - name: Run Django makemigrations
-      run: docker-compose exec web python3 manage.py makemigrations
+      run: docker-compose exec -T web python3 manage.py makemigrations
 
     - name: Run Django migrate
-      run: docker-compose exec web python3 manage.py migrate
+      run: docker-compose exec -T web python3 manage.py migrate
 
     - name: Check MySQL Connection
-      run: |
-        docker-compose exec db mysql -u django_admin -p'test123' -e "SHOW DATABASES;"
+      run: docker-compose exec -T db mysql -u django_admin -p'test123' -e "SHOW DATABASES;"
 
     - name: Wait for the Django server to be ready
-      run: |
-        sleep 15  # Give some time for the server to start (adjust if needed)
+      run: sleep 15 
 
     - name: Verify Django Admin is accessible
-      run: |
-        curl --fail http://localhost:8888/admin || exit 1
+      run: curl --fail http://localhost:8888/admin || exit 1
 
     - name: Tear Down Docker Compose
       if: always()
